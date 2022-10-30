@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
 {
+    [Header("Sway Values")]
+    public float _intensity;
+    public float _smoothness;
+    public float _yBobMultiplier;
+
+    //interal privates
     private Mouse input;
 
     private Quaternion originRotation;
-
-    public float _intensity;
-    public float _smoothness;
 
     private void Start()
     {
@@ -31,7 +34,7 @@ public class WeaponSway : MonoBehaviour
 
         //calculating target rotation
         Quaternion xtargetAdj = Quaternion.AngleAxis(-_intensity * mouseX, Vector3.up);
-        Quaternion ytargetAdj = Quaternion.AngleAxis(_intensity * mouseY, Vector3.right);
+        Quaternion ytargetAdj = Quaternion.AngleAxis(_intensity * mouseY * _yBobMultiplier, Vector3.right);
         Quaternion targetRotation = originRotation * xtargetAdj * ytargetAdj;
 
         //rotating gun towards target rotation

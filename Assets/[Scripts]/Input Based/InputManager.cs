@@ -50,4 +50,17 @@ public class InputManager : MonoBehaviour
     {
         return _movement.Movement.Jump.triggered;
     }
+
+    public bool GetADSIsTrigger()
+    {
+        if (_movement.Shooting.AimingDownSightsEnabled.IsPressed())
+        {
+            return true;
+        }
+        if (_movement.Shooting.AimingDownSightsDisabled.WasReleasedThisFrame())
+        {
+            return false;
+        }
+        return false;
+    }
 }
