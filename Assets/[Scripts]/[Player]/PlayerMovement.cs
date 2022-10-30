@@ -38,7 +38,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Grav();
         Movement();
-        Jump();
+       
+        if (isGrounded)
+        {
+            Jump();
+        }
     }
 
     //receives inputs from the InputManager.cs and apply them to the character controller
