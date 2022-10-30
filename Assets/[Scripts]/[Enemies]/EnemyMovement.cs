@@ -12,10 +12,9 @@ public class EnemyMovement : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patroling
-    [HideInInspector]
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    public Vector3[] waypoints;
+    int waypointIndex;
+    Vector3 target;
 
     //Attacking
     public float timeBetweenAttacks;
@@ -29,6 +28,8 @@ public class EnemyMovement : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        UpdateDestination();
     }
 
     public void SetState(BehaviourState state)
@@ -54,24 +55,26 @@ public class EnemyMovement : MonoBehaviour
 
     private void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        if (Vector3.Distance(transform.position, target) < 1)
+        {
+            IterateWaypointIndex();
+            
+        }
 
-        if (walkPointSet) agent.SetDestination(walkPoint);
-
-        if (Vector3.Distance(transform.position, walkPoint) < 1) walkPointSet = false;
+        UpdateDestination();
     }
 
-    private void SearchWalkPoint()
+    private void UpdateDestination()
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        target = waypoints[waypointIndex];
+        agent.SetDestination(target);
+    }
 
-        walkPoint = new(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-        {
-            walkPointSet = true;
-        }
+    private void IterateWaypointIndex()
+    {
+        waypointIndex++;
+        if (waypointIndex == waypoints.Length)
+            waypointIndex = 0;
     }
     
     private void Chasing()
