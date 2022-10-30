@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: acc843e2cee288148b33d4dd460f5730, type: 2}
 --- !u!1 &72535508
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &541054834
 Transform:
@@ -321,8 +321,8 @@ GameObject:
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1008879217
 Transform:
@@ -607,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7289228573990158440, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.67
+      value: 9.09
       objectReference: {fileID: 0}
     - target: {fileID: 7289228573990158440, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
       propertyPath: m_LocalPosition.y
@@ -615,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7289228573990158440, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.53
+      value: -4.84
       objectReference: {fileID: 0}
     - target: {fileID: 7289228573990158440, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
       propertyPath: m_LocalRotation.w
