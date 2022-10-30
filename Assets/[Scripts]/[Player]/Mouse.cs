@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mouse : MonoBehaviour
 {
+    private static Mouse _instance;
     private InputManager input;
     private Transform _playerBody;
     private Vector2 mouseLook;
@@ -11,8 +12,29 @@ public class Mouse : MonoBehaviour
     private float _mouseSensitivity = 100.0f;
     private float xRotation = 0f;
 
+    public float mouseX;
+    public float mouseY;
+
+    public static Mouse Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     private void Awake()
     {
+
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         _playerBody = transform.parent;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -30,8 +52,8 @@ public class Mouse : MonoBehaviour
     {
         mouseLook = input.GetMouseMovement();
 
-        float mouseX = mouseLook.x * _mouseSensitivity * Time.deltaTime;
-        float mouseY = mouseLook.y * _mouseSensitivity * Time.deltaTime;
+        mouseX = mouseLook.x * _mouseSensitivity * Time.deltaTime;
+        mouseY = mouseLook.y * _mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
@@ -41,5 +63,15 @@ public class Mouse : MonoBehaviour
         _playerBody.Rotate(Vector2.up * mouseX);
 
 
+    }
+
+    public float GetMouseX()
+    {
+        return mouseX;
+    }
+
+    public float GetMouseY()
+    {
+        return mouseY;
     }
 }
