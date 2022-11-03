@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Mouse : MonoBehaviour
 {
+    //mouse input variables
+    public float mouseX;
+    public float mouseY;
+
+    //internal privates
     private static Mouse _instance;
     private InputManager input;
     private Transform _playerBody;
@@ -11,9 +16,6 @@ public class Mouse : MonoBehaviour
 
     private float _mouseSensitivity = 100.0f;
     private float xRotation = 0f;
-
-    public float mouseX;
-    public float mouseY;
 
     public static Mouse Instance
     {

@@ -189,6 +189,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Shooting",
+            "id": "895f5b30-aaf4-4782-9daf-b00cc7ab207a",
+            "actions": [
+                {
+                    "name": "Aiming Down Sights Enabled",
+                    "type": "Button",
+                    "id": "8695bb6e-e250-48d0-ae75-76f41bff6040",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aiming Down Sights Disabled",
+                    "type": "Button",
+                    "id": "e6b33b77-ea2d-4743-9011-7cc19cddbfb7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ac465c64-7b20-4583-a245-e87792d18482",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming Down Sights Enabled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "595f20b5-df4b-4429-91af-ef4647289ae8",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming Down Sights Enabled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9939a25-b79d-456a-b8b8-65ef5a0e6df9",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming Down Sights Disabled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36f765f0-c494-4d41-88f4-d42eedd206e0",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming Down Sights Disabled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -211,6 +211,76 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Shooting"",
+            ""id"": ""895f5b30-aaf4-4782-9daf-b00cc7ab207a"",
+            ""actions"": [
+                {
+                    ""name"": ""Aiming Down Sights Enabled"",
+                    ""type"": ""Button"",
+                    ""id"": ""8695bb6e-e250-48d0-ae75-76f41bff6040"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aiming Down Sights Disabled"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6b33b77-ea2d-4743-9011-7cc19cddbfb7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ac465c64-7b20-4583-a245-e87792d18482"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming Down Sights Enabled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""595f20b5-df4b-4429-91af-ef4647289ae8"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming Down Sights Enabled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9939a25-b79d-456a-b8b8-65ef5a0e6df9"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming Down Sights Disabled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36f765f0-c494-4d41-88f4-d42eedd206e0"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming Down Sights Disabled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -220,6 +290,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Movement_Movement = m_Movement.FindAction("Movement", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Look = m_Movement.FindAction("Look", throwIfNotFound: true);
+        // Shooting
+        m_Shooting = asset.FindActionMap("Shooting", throwIfNotFound: true);
+        m_Shooting_AimingDownSightsEnabled = m_Shooting.FindAction("Aiming Down Sights Enabled", throwIfNotFound: true);
+        m_Shooting_AimingDownSightsDisabled = m_Shooting.FindAction("Aiming Down Sights Disabled", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -324,10 +398,56 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // Shooting
+    private readonly InputActionMap m_Shooting;
+    private IShootingActions m_ShootingActionsCallbackInterface;
+    private readonly InputAction m_Shooting_AimingDownSightsEnabled;
+    private readonly InputAction m_Shooting_AimingDownSightsDisabled;
+    public struct ShootingActions
+    {
+        private @PlayerInput m_Wrapper;
+        public ShootingActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @AimingDownSightsEnabled => m_Wrapper.m_Shooting_AimingDownSightsEnabled;
+        public InputAction @AimingDownSightsDisabled => m_Wrapper.m_Shooting_AimingDownSightsDisabled;
+        public InputActionMap Get() { return m_Wrapper.m_Shooting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ShootingActions set) { return set.Get(); }
+        public void SetCallbacks(IShootingActions instance)
+        {
+            if (m_Wrapper.m_ShootingActionsCallbackInterface != null)
+            {
+                @AimingDownSightsEnabled.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnAimingDownSightsEnabled;
+                @AimingDownSightsEnabled.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnAimingDownSightsEnabled;
+                @AimingDownSightsEnabled.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnAimingDownSightsEnabled;
+                @AimingDownSightsDisabled.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnAimingDownSightsDisabled;
+                @AimingDownSightsDisabled.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnAimingDownSightsDisabled;
+                @AimingDownSightsDisabled.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnAimingDownSightsDisabled;
+            }
+            m_Wrapper.m_ShootingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @AimingDownSightsEnabled.started += instance.OnAimingDownSightsEnabled;
+                @AimingDownSightsEnabled.performed += instance.OnAimingDownSightsEnabled;
+                @AimingDownSightsEnabled.canceled += instance.OnAimingDownSightsEnabled;
+                @AimingDownSightsDisabled.started += instance.OnAimingDownSightsDisabled;
+                @AimingDownSightsDisabled.performed += instance.OnAimingDownSightsDisabled;
+                @AimingDownSightsDisabled.canceled += instance.OnAimingDownSightsDisabled;
+            }
+        }
+    }
+    public ShootingActions @Shooting => new ShootingActions(this);
     public interface IMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+    }
+    public interface IShootingActions
+    {
+        void OnAimingDownSightsEnabled(InputAction.CallbackContext context);
+        void OnAimingDownSightsDisabled(InputAction.CallbackContext context);
     }
 }

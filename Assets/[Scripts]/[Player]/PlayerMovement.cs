@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController _controller;
-    InputManager input;
+    [Header("Movement Info")]
+    public Transform ground;
+    public LayerMask groundMask;
+
+    [Header("Movement Variables")]
+    public float _speed = 5.0f;
+    public float _gravity = -9.8f;
+    public float _jumpHeight = 3.0f;
+    public float disToGround = 0.4f;
+
+    //internal privates
+    private CharacterController _controller;
+    private InputManager input;
 
     private Vector2 move;
     private Vector3 _playerVelo;
 
     private bool isGrounded;
 
-    public Transform ground;
-
-    public LayerMask groundMask;
-
-    public float _speed = 5.0f;
-    public float _gravity = -9.8f;
-    public float _jumpHeight = 3.0f;
-    public float disToGround = 0.4f;
 
     private void Awake()
     {
@@ -35,7 +38,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Grav();
         Movement();
-        Jump();
+       
+        if (isGrounded)
+        {
+            Jump();
+        }
     }
 
     //receives inputs from the InputManager.cs and apply them to the character controller
