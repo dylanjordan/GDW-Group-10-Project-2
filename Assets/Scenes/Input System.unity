@@ -710,6 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _adsSpeed: 16
   aimPosition: {x: 0.005232893, y: -0.04307747, z: 0.006002307}
+  aimRotation: {x: -0.1, y: -90, z: 0}
 --- !u!114 &1196753426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,7 +769,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371340483}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1371340486
 Camera:
   m_ObjectHideFlags: 0
