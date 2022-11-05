@@ -233,7 +233,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 278488672}
-  - component: {fileID: 278488673}
   m_Layer: 0
   m_Name: Weapon Holder
   m_TagString: Untagged
@@ -258,21 +257,6 @@ Transform:
   m_Father: {fileID: 1371340484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &278488673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278488671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4262c10c9a80643afde717e6896a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _intensity: 1
-  _smoothness: 10
-  _yBobMultiplier: 8
 --- !u!1 &314598714
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +710,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _adsSpeed: 16
   aimPosition: {x: 0.005232893, y: -0.04307747, z: 0.006002307}
+  aimRotation: {x: -0.1, y: -90, z: 0}
+--- !u!114 &1196753426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196753423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4262c10c9a80643afde717e6896a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intensity: 1
+  _smoothness: 10
+  _yBobMultiplier: 8
 --- !u!1 &1371340483
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +738,7 @@ GameObject:
   - component: {fileID: 1371340486}
   - component: {fileID: 1371340485}
   - component: {fileID: 1371340487}
+  - component: {fileID: 1371340488}
   m_Layer: 0
   m_Name: Weapon Camera
   m_TagString: Untagged
@@ -768,7 +769,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371340483}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1371340486
 Camera:
   m_ObjectHideFlags: 0
@@ -845,6 +846,21 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1371340488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371340483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1a68ed923b5444ca2610e53e1f04d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adsFOV: 40
+  _defaultFOV: 60
+  myCam: {fileID: 1371340486}
 --- !u!1 &1440257783
 GameObject:
   m_ObjectHideFlags: 0

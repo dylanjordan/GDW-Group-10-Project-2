@@ -11,18 +11,22 @@ public class WeaponSway : MonoBehaviour
 
     //interal privates
     private Mouse input;
-
+    private InputManager manager;
     private Quaternion originRotation;
 
     private void Start()
     {
         input = Mouse.Instance;
+        manager = InputManager.Instance;
 
         originRotation = transform.localRotation;
     }
     private void Update()
     {
-        UpdateSway();
+        if (!manager.GetADSIsTrigger())
+        {
+            UpdateSway();
+        }
     }
 
     //creating weapon sway from movement
