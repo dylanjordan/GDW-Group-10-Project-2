@@ -20,7 +20,7 @@ public class FieldOfView : MonoBehaviour
 
     private void OnEnable()
     {
-        playerRef = Utility.playerRef;
+        playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
 
