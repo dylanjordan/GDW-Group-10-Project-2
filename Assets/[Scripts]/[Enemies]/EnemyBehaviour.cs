@@ -23,6 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
     //
     void Update()
     {
+        if (GetIsDead()) { KillEnemy(); return; }
+
         if (fov.canSeePlayer && Vector3.Distance(transform.position, fov.playerRef.transform.position) < fov.viewRadius / 2)
             state = BehaviourState.ATTACK;
         else if (fov.canSeePlayer || health.isHit)
@@ -31,6 +33,11 @@ public class EnemyBehaviour : MonoBehaviour
             state = BehaviourState.PATROL;
 
         movement.SetState(state);
+    }
+
+    private void KillEnemy()
+    {
+        Destroy(this.gameObject);
     }
 
     public bool GetIsDead()
