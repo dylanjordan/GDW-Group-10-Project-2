@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
     //
     private void OnEnable()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = Utility.playerRef.transform;
         agent = GetComponent<NavMeshAgent>();
 
         UpdateDestination();
@@ -34,6 +34,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void SetState(BehaviourState state)
     {
+        Debug.Log(state);
         this.state = state;
     }
 
@@ -58,7 +59,6 @@ public class EnemyMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, target) < 1)
         {
             IterateWaypointIndex();
-            
         }
 
         UpdateDestination();
@@ -79,6 +79,7 @@ public class EnemyMovement : MonoBehaviour
     
     private void Chasing()
     {
+        Debug.Log("Chasing Player");
         agent.SetDestination(player.position);
     }
 

@@ -16,11 +16,11 @@ public class FieldOfView : MonoBehaviour
     [HideInInspector]
     public GameObject playerRef;
 
-    private bool isDead;
+    private bool isDead = false;
 
     private void OnEnable()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
+        playerRef = Utility.playerRef;
         StartCoroutine(FOVRoutine());
     }
 
@@ -28,10 +28,10 @@ public class FieldOfView : MonoBehaviour
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
-
         while (!isDead)
         {
             yield return wait;
+            isDead = GetComponent<EnemyBehaviour>().GetIsDead();
             FieldOfViewCheck();
         }
     }
@@ -40,7 +40,6 @@ public class FieldOfView : MonoBehaviour
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
-
         if (rangeChecks.Length != 0) //If a target is present, proceed
         {
             Transform target = rangeChecks[0].transform;
