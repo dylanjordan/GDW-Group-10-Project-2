@@ -22,10 +22,10 @@ public class EnemyCount : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            if (enemy.GetComponent<EnemyBehaviour>().GetIsDead())
+            if (enemy == null)
             {
-                enemyCount--;
                 enemies.Remove(enemy);
+                enemyCount--;
                 break;
             }
         }
