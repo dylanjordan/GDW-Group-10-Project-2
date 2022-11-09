@@ -23,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     //
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E)) health.ChangeHealth(-100);
         if (GetIsDead()) { KillEnemy(); return; }
 
         if (fov.canSeePlayer && Vector3.Distance(transform.position, fov.playerRef.transform.position) < fov.viewRadius / 2)

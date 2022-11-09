@@ -17,6 +17,11 @@ public class Health
         currentHealth = maxHealth;
     }
 
+    public float GetHealthPercent()
+    {
+        return Mathf.Clamp01(currentHealth / maxHealth);
+    }
+
     public void ChangeHealth(float amount)
     {
         currentHealth += amount;

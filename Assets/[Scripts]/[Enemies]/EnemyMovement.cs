@@ -33,7 +33,6 @@ public class EnemyMovement : MonoBehaviour
 
     public void SetState(BehaviourState state)
     {
-        Debug.Log(state);
         this.state = state;
     }
 
@@ -78,7 +77,6 @@ public class EnemyMovement : MonoBehaviour
     
     private void Chasing()
     {
-        Debug.Log("Chasing Player");
         agent.SetDestination(player.position);
     }
 
