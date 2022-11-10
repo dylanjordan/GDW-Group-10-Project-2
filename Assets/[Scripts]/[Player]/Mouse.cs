@@ -14,7 +14,7 @@ public class Mouse : MonoBehaviour
     private Transform _playerBody;
     private Vector2 mouseLook;
 
-    private float _mouseSensitivity = 100.0f;
+    private float _mouseSensitivity = 40.0f;
     private float xRotation = 0f;
 
     public static Mouse Instance
