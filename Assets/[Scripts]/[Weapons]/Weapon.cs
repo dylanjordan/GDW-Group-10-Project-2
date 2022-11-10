@@ -57,6 +57,7 @@ public class Weapon : MonoBehaviour
         else
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, Time.deltaTime * _adsSpeed);
+            transform.localRotation= Quaternion.Lerp(transform.localRotation, originalRotation, Time.deltaTime * _adsSpeed);
         }
     }
 

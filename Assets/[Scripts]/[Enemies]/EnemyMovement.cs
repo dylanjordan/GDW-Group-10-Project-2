@@ -11,6 +11,10 @@ public class EnemyMovement : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
 
+    [SerializeField] private float range;
+    [SerializeField] private float damage;
+    [SerializeField] private float impactForce;
+
     //Patroling
     public Vector3[] waypoints;
     int waypointIndex;
@@ -89,6 +93,23 @@ public class EnemyMovement : MonoBehaviour
         {
             //Attack Code
             Debug.Log("Attacking Player");
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, range))
+            {
+                Debug.Log(hit.transform.name + ("has been hit!"));
+                ///! = is not
+                Healthbar target = hit.transform.GetComponent<Healthbar>();
+                if (target != null)
+                {
+                    target.ChangeHealth(damage);
+                }
+
+                if (hit.rigidbody != null)
+                {
+                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                }
+            }
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);

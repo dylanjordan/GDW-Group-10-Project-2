@@ -40,10 +40,10 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name + ("has been hit!"));
             ///! = is not
-            Target target = hit.transform.GetComponent<Target>();
+            EnemyBehaviour target = hit.transform.GetComponent<EnemyBehaviour>();
             if (target != null)
             {
-                target.TakeDamage(damage);
+                target.ChangeHealth(damage);
             }
 
             if (hit.rigidbody != null)
