@@ -842,38 +842,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.data[2].x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.data[2].z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.data[3].x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.data[4].x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.data[4].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.data[5].x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: -4212850725198606731, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
-      propertyPath: waypoints.Array.data[5].y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7289228573990158440, guid: cc6260a00404bc94b8fe70361d498a62, type: 3}
       propertyPath: m_RootOrder
       value: 3
